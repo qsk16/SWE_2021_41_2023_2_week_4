@@ -1,0 +1,16 @@
+#!/bin/bash
+
+files="files"
+to="."
+for f in "$files"/*.txt; do
+    if [ -f "$f" ]; then
+        title=$(basename -- "$f")
+        firstLetter="${title:0:1}"
+
+        if [[ "$firstLetter" =~ ^[a-zA-Z]$ ]]; then
+            mv "$f" "$to/$firstLetter/"
+        fi
+    fi
+done
+
+echo "Complete!"
